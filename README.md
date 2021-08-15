@@ -1,6 +1,6 @@
 # OpenGLLearn
 
-####Very basic C++ graphics engine using modern OpenGL (3.3 core).
+##Very basic C++ graphics engine using modern OpenGL (3.3 core).
 
 ##Dependencies - 
   glad
