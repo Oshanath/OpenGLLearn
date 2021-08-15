@@ -8,35 +8,37 @@ Model::Model(const char* file):
 	rotation(glm::quat(1.0f, 0.0f, 0.0f, 0.0f)),
 	scalar(1.0f){
 
-	std::string stdFileName = std::string(file);
-	std::string filePath = stdFileName.substr(0, stdFileName.find_last_of("/") + 1);
+	if (file != "") {
+		std::string stdFileName = std::string(file);
+		std::string filePath = stdFileName.substr(0, stdFileName.find_last_of("/") + 1);
 
-	std::string gltfFile = get_file_contents(file);
-	json = Json::parse(gltfFile);
+		std::string gltfFile = get_file_contents(file);
+		json = Json::parse(gltfFile);
 
-	unsigned int numberOfBuffers = json["buffers"].size();
-	std::vector<std::string> buffers;
+		unsigned int numberOfBuffers = json["buffers"].size();
+		std::vector<std::string> buffers;
 
-	for (int i = 0; i < numberOfBuffers; i++) {
-		std::string buffer = get_file_contents((filePath + std::string(json["buffers"][i]["uri"])).c_str());
-		buffers.push_back(buffer);
+		for (int i = 0; i < numberOfBuffers; i++) {
+			std::string buffer = get_file_contents((filePath + std::string(json["buffers"][i]["uri"])).c_str());
+			buffers.push_back(buffer);
+		}
+
+		loadMeshes(buffers);
+
+		if (json.find("scene") == json.end()) {
+			std::cout << "scene not found" << std::endl;
+			throw(errno);
+		}
+
+		unsigned int sceneIndex = json["scene"];
+		std::vector<unsigned int> nodeIndices = json["scenes"][sceneIndex]["nodes"];
+
+		for (unsigned int nodeIndex : nodeIndices) {
+			traverseNode(nodeIndex);
+		}
+
+		loadTextures(filePath);
 	}
-	
-	loadMeshes(buffers);
-	
-	if (json.find("scene") == json.end()) {
-		std::cout << "scene not found" << std::endl;
-		throw(errno);
-	}
-
-	unsigned int sceneIndex = json["scene"];
-	std::vector<unsigned int> nodeIndices = json["scenes"][sceneIndex]["nodes"];
-
-	for (unsigned int nodeIndex : nodeIndices) {
-		traverseNode(nodeIndex);
-	}
-
-	loadTextures(filePath);
 
 }
 
