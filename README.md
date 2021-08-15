@@ -2,7 +2,8 @@
 
 **Very basic C++ graphics engine using modern OpenGL (3.3 core).**
 
-**Dependencies - **
+**Dependencies -**
+
   glad
   glfw
   glm
@@ -12,6 +13,7 @@
 **All dependencies are included along with the configured visual studio solution.**
 
 **Features - **
+
   Cross platform window creation
   gltf 2.0 model loading with a single line
   Supports multiple objects and multiple light sources in a single scene
@@ -24,7 +26,7 @@
   
 **How to use**
 
-###Only edit the addModelsAndLights() functions in the main.cpp file. Don't edit anything else.
+Only edit the addModelsAndLights() functions in the main.cpp file. Don't edit anything else.
 
 **Importing a model**
 
@@ -51,7 +53,7 @@ Add the created model to the models object.
 models.push_back(crate);
 ```
 
-####Creating a light source
+**Creating a light source**
 All light sources need an internal model to render. If a model is not used for a light source. Create a model object in the heap as usual but with "" as the arguement.
 
 ```
