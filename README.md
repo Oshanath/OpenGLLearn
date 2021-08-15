@@ -1,17 +1,17 @@
 # OpenGLLearn
 
-##Very basic C++ graphics engine using modern OpenGL (3.3 core).
+**Very basic C++ graphics engine using modern OpenGL (3.3 core).**
 
-##Dependencies - 
+**Dependencies - **
   glad
   glfw
   glm
   nlohmann json
   stb_image
   
-####All dependencies are included along with the configured visual studio solution.
+**All dependencies are included along with the configured visual studio solution.**
 
-##Features - 
+**Features - **
   Cross platform window creation
   gltf 2.0 model loading with a single line
   Supports multiple objects and multiple light sources in a single scene
@@ -22,11 +22,11 @@
   No need to make direct OpenGL API calls
   8 sample models. More can be downloaded and converted to gltf 2.0 seperate format using Blender
   
-##How to use
+**How to use**
 
 ###Only edit the addModelsAndLights() functions in the main.cpp file. Don't edit anything else.
 
-####Importing a model
+**Importing a model**
 
 To import a model, it needs to be in gltf 2.0 format, and the binary file, textures and the .gltf file need to be seperate.
 If your model do not fulfill these requirements, please downlaod Blender and convert it into gltf 2.0 seperate format.
