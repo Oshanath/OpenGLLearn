@@ -108,5 +108,7 @@ Add the light source to the std::vector of lightSources.
 ```
 lightSources.push_back(cubeLight);
 ```
+If you are using multiple light sources, you need to update the variable numberOfLightSources in the fragment shader (default.frag) to the new number of 
+light sources.
 
 And that's it! Build the program and play around with the values and models.
